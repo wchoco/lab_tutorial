@@ -1,0 +1,6 @@
+[package]
+name = "first_task"
+version = "0.1.0"
+authors = ["riku.okajima <riku.okajima@gmail.com>"]
+
+[dependencies]

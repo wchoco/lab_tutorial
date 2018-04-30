@@ -1,0 +1,11 @@
+BamHI		5'- G|G A T C C - 3'
+		3'- C C T A G|G - 5'
+
+EcoRI		5'- G|A A T T C - 3'
+		3'- C T T A A|G - 5'
+
+HindIII		5'- A|A G C T T - 3'
+		3'- T T C G A|A - 5'
+
+NotI		5'- G C|G G C C G C - 3'
+		3'- C G C C G G|C G - 5'
