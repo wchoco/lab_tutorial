@@ -1,3 +1,6 @@
+extern crate first_task;
+use first_task::tasks::*;
+
 fn main() {
-    println!("Hello, world!");
+    task1::solve();
 }
