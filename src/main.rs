@@ -3,4 +3,5 @@ use first_task::tasks::*;
 
 fn main() {
     task1::solve();
+    task2::solve();
 }
