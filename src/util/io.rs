@@ -82,3 +82,57 @@ impl Gff {
         })
     }
 }
+
+#[derive(Debug)]
+pub struct Fasta {
+    pub num: u64,
+    pub records: Vec<FastaRecord>,
+}
+
+#[derive(Debug)]
+pub struct FastaRecord {
+    pub id: String,
+    pub seq: String,
+}
+
+impl Fasta {
+    pub fn from_file(path: &str) -> Result<Fasta, Error> {
+        let mut line = String::new();
+        let mut buf = BufReader::new(File::open(path)?);
+
+        let mut records: Vec<_> = Vec::new();
+        let mut id = String::new();
+        let mut seq: Vec<String> = Vec::new();
+        let mut count: u64 = 0;
+        while buf.read_line(&mut line)? > 0 {
+            if line.starts_with(">") {
+                count += 1;
+                id = line.clone();
+                line.clear();
+                break;
+            }
+        }
+        while buf.read_line(&mut line)? > 0 {
+            if line.starts_with(">") {
+                count += 1;
+                records.push(FastaRecord {
+                    id: id,
+                    seq: seq.join(""),
+                });
+                id = line.clone();
+                seq.clear();
+            } else {
+                seq.push(line.clone());
+            }
+            line.clear();
+        }
+        records.push(FastaRecord {
+            id: id,
+            seq: seq.join(""),
+        });
+        Ok(Fasta {
+            num: count,
+            records: records,
+        })
+    }
+}

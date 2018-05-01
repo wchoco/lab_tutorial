@@ -75,3 +75,46 @@ impl<'a> Amino {
         }
     }
 }
+
+#[derive(Debug)]
+pub struct RestrictionEnzyme<'a> {
+    recognition_site: &'a str,
+    cut_pos: usize,
+}
+
+impl<'a, 'b> RestrictionEnzyme<'a> {
+    pub fn cut(&self, target: &'b str) -> Vec<usize> {
+        target
+            .match_indices(self.recognition_site)
+            .map(|v| v.0 + self.cut_pos)
+            .collect()
+    }
+
+    pub fn ecor1() -> RestrictionEnzyme<'a> {
+        RestrictionEnzyme {
+            recognition_site: "GAATTC",
+            cut_pos: 1,
+        }
+    }
+
+    pub fn hind3() -> RestrictionEnzyme<'a> {
+        RestrictionEnzyme {
+            recognition_site: "AAGCTT",
+            cut_pos: 1,
+        }
+    }
+
+    pub fn bamh1() -> RestrictionEnzyme<'a> {
+        RestrictionEnzyme {
+            recognition_site: "GGATCC",
+            cut_pos: 1,
+        }
+    }
+
+    pub fn not1() -> RestrictionEnzyme<'a> {
+        RestrictionEnzyme {
+            recognition_site: "GCGGCCGC",
+            cut_pos: 2,
+        }
+    }
+}
