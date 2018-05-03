@@ -4,7 +4,7 @@ use std::collections::hash_set::HashSet;
 use util::data::RestrictionEnzyme;
 use util::io::Fasta;
 
-pub fn solve() {
+pub fn solve(label: &str) {
     let ecor1 = RestrictionEnzyme::ecor1();
     let hind3 = RestrictionEnzyme::hind3();
     let bamh1 = RestrictionEnzyme::bamh1();
@@ -13,13 +13,18 @@ pub fn solve() {
     let target = &Fasta::from_file("data/NC_001416.fna").unwrap().records[0].seq;
 
     println!(
-        "Task3: EcoRI   : {:?}\nTask3: HindIII : {:?}\nTask3: BamHI   : {:?}\nTask3: NotI    : {:?}\nTask3: ALL     : {:?}",
+        "{}EcoRI   : {:?}\n{}HindIII : {:?}\n{}BamHI   : {:?}\n{}NotI    : {:?}\n{}ALL     : {:?}",
+        label,
         cut_length(&[&ecor1], target),
+        label,
         cut_length(&[&hind3], target),
+        label,
         cut_length(&[&bamh1], target),
+        label,
         cut_length(&[&not1], target),
-        cut_length(&[&ecor1, &hind3, &bamh1, &not1],target),
-        );
+        label,
+        cut_length(&[&ecor1, &hind3, &bamh1, &not1], target),
+    );
 }
 
 fn cut_length(enzymes: &[&RestrictionEnzyme], target: &str) -> Vec<usize> {

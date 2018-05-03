@@ -12,9 +12,9 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::io::BufReader;
 
-pub fn solve() {
+pub fn solve(label: &str) {
     let ec_list = read_ec_list("data/enzyme.txt");
-    print!("Task4: {}", sort_ec_list(ec_list).join("Task4: "));
+    print!("{}{}", label, sort_ec_list(ec_list).join(label));
 }
 
 fn read_ec_list(path: &str) -> Vec<String> {

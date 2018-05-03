@@ -3,7 +3,7 @@
 use std::path::Path;
 use util::io::Gff;
 
-pub fn solve() {
+pub fn solve(label: &str) {
     let path = Path::new("data/NC_010473.gff");
     let gff = Gff::from_file(path.to_str().unwrap()).unwrap();
     let mut count = 0;
@@ -12,5 +12,5 @@ pub fn solve() {
             count += 1;
         }
     }
-    println!("Task1: {}", count);
+    println!("{}{}", label, count);
 }

@@ -11,11 +11,13 @@ fn manage_task() {
     print!("Input task number [1~7]: ");
     io::stdout().flush().unwrap();
     io::stdin().read_line(&mut line).unwrap();
-    match line.trim_matches('\n') {
-        "1" => task1::solve(),
-        "2" => task2::solve(),
-        "3" => task3::solve(),
-        "4" => task4::solve(),
-        _ => println!("please input 1 to 5"),
+    let task_num = line.trim_matches('\n');
+    let label = format!("Task{}: ", task_num);
+    match task_num {
+        "1" => task1::solve(&label),
+        "2" => task2::solve(&label),
+        "3" => task3::solve(&label),
+        "4" => task4::solve(&label),
+        _ => println!("Please input 1 to 7."),
     }
 }
