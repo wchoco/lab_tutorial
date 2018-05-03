@@ -25,6 +25,7 @@ fn manage_task(task: Option<String>) {
         "2" => task2::solve(&label),
         "3" => task3::solve(&label),
         "4" => task4::solve(&label),
+        "5" => task5::solve(&label),
         _ => println!("Please input 1 to 7."),
     }
 }
