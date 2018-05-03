@@ -5,4 +5,5 @@ fn main() {
     task1::solve();
     task2::solve();
     task3::solve();
+    task4::solve();
 }
