@@ -2,12 +2,12 @@
 use std::io::{self, Write};
 use util::data::Amino;
 
-pub fn solve() {
+pub fn solve(label: &str) {
     let mut line = String::new();
-    print!("Task2: ");
+    print!("{}Input amino acid: ", label);
     io::stdout().flush().unwrap();
     io::stdin().read_line(&mut line).unwrap();
-    println!("Task2: {:?}", aa_to_na(&line.trim_matches('\n')));
+    println!("{}{:?}", label, aa_to_na(&line.trim_matches('\n')));
 }
 
 fn aa_to_na(amino: &str) -> Vec<String> {
