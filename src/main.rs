@@ -1,5 +1,5 @@
-extern crate first_task;
-use first_task::tasks::*;
+extern crate lab_tutorial;
+use lab_tutorial::tasks::*;
 use std::env;
 use std::io::{self, Write};
 
